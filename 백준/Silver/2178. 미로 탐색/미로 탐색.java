@@ -27,7 +27,7 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             String line = st.nextToken();
             for (int j=0; j<M; j++) {
-                A[i][j] = Integer.parseInt(line.substring(j,j+1));
+                A[i][j] = line.charAt(j) - '0';
             }
         }
 
@@ -39,12 +39,12 @@ public class Main {
     private static void BFS(int sy, int sx) {
         Queue<int[]>queue = new LinkedList<>();
         queue.offer(new int[] {sy,sx});
+        visited[sy][sx] = true;
         
         while(!queue.isEmpty()) {
             int now[] = queue.poll();
             int y = now[0];
             int x = now[1];
-            visited[y][x] = true;
             
             for (int k=0; k<4; k++) {       // 상하좌우 4방향 탐색
                 int ny = y + dy[k];
